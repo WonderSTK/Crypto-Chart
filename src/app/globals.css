@@ -2,6 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Import Circular Std font */
+@font-face {
+  font-family: 'Circular Std';
+  src: url('./fonts/circular-std-medium-500.ttf') format('truetype'); /* Corrected format to truetype */
+  font-weight: normal;
+  font-style: normal;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -17,7 +25,7 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Circular Std', Arial, Helvetica, sans-serif; /* Use Circular Std font */
 }
 
 @layer utilities {
