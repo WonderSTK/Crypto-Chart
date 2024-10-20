@@ -117,7 +117,6 @@ export default function FinancialChart() {
       filler: {
         propagate: true
       },
-      crosshair: {},
     },
     interaction: {
       mode: 'index',
@@ -240,11 +239,11 @@ export default function FinancialChart() {
 
   const crosshairPlugin = {
     id: 'crosshair',
-    afterDraw: (chart: ChartJS, args: any, options: any) => {
+    afterDraw: (chart: ChartJS) => {
       if (chart.tooltip?.getActiveElements()?.length) {
         const activePoint = chart.tooltip.getActiveElements()[0];
         const { ctx } = chart;
-        const { x } = activePoint.element;
+        const { x, y } = activePoint.element;
         const yAxis = chart.scales.y;
         const xAxis = chart.scales.x;
 
@@ -259,21 +258,21 @@ export default function FinancialChart() {
 
         // Draw horizontal line
         ctx.beginPath();
-        ctx.moveTo(xAxis.left, activePoint.element.y);
-        ctx.lineTo(xAxis.right, activePoint.element.y);
+        ctx.moveTo(xAxis.left, y);
+        ctx.lineTo(xAxis.right, y);
         ctx.stroke();
 
         // Draw price tooltip on y-scale
-        const price = activePoint.element.$context.raw;
+        const price = (activePoint.element as any).$context.raw;
         ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
         ctx.beginPath();
-        ctx.roundRect(xAxis.right + 5, activePoint.element.y - 12, 70, 24, 4);
+        ctx.roundRect(xAxis.right + 5, y - 12, 70, 24, 4);
         ctx.fill();
         ctx.fillStyle = 'white';
         ctx.font = '12px Circular Std';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.fillText(`$${price.toFixed(2)}`, xAxis.right + 40, activePoint.element.y);
+        ctx.fillText(`$${price.toFixed(2)}`, xAxis.right + 40, y);
 
         ctx.restore();
       }
@@ -420,7 +419,7 @@ export default function FinancialChart() {
             plugins={[crosshairPlugin]}
           />
         </div>
-        <div style={{ height: "20%", marginTop: "-80px" }}>
+        <div style={{ height: "20%", marginTop: "-60px" }}>
           <Chart
             ref={volumeChartRef as any}
             type="bar"
