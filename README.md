@@ -33,7 +33,7 @@ This is a Crypto chart application built with [Next.js](https://nextjs.org), [Re
 
 1. Clone the repository:
 
-```bash
+
 git clone https://github.com/WonderSTK/Crypto-chart.git
 cd Crypto-chart
 
