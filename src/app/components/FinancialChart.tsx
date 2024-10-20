@@ -1,13 +1,13 @@
 "use client"
 
 import React, { useState, useEffect, useRef } from 'react'
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend, TimeScale, ChartOptions, Filler } from 'chart.js'
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend, TimeScale, ChartOptions, Filler, LineController, BarController } from 'chart.js'
 import { Chart } from 'react-chartjs-2'
 import 'chartjs-adapter-date-fns'
 import { enUS } from 'date-fns/locale'
 import axios from 'axios'
 
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend, TimeScale, Filler)
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, BarElement, Title, Tooltip, Legend, TimeScale, Filler, LineController, BarController)
 
 interface PriceData {
   prices: [number, number][]
