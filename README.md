@@ -67,9 +67,9 @@ yarn test
 
 ## Usage
 
-### FinancialChart Component
+### CryptoChart Component
 
-The `FinancialChart` component is the main component that displays the financial chart. It fetches data from the CoinGecko API and renders line and bar charts using `react-chartjs-2`.
+The `CryptoChart` component is the main component that displays the crypto chart. It fetches data from the CoinGecko API and renders line and bar charts using `react-chartjs-2`.
 
 #### Props
 
